@@ -11,7 +11,7 @@ interface DropdownProps {
 
 const Dropdown: React.FC<DropdownProps> = ({ buttonText, content }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const [dropdownTop, setDropdownTop] = useState<number | null>(0);
+  const [dropdownTop, setDropdownTop] = useState<number | null>(50);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -27,7 +27,7 @@ const Dropdown: React.FC<DropdownProps> = ({ buttonText, content }) => {
       const topPosition =
         spaceRemaining > contentHeight
           ? null
-          : -(contentHeight - spaceRemaining); // move up by height clipped by window
+          : -(contentHeight - spaceRemaining);
       setDropdownTop(topPosition);
     }
 
