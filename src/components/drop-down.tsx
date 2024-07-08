@@ -62,22 +62,13 @@ const DropDown: React.FC = () => {
           </div>
         )}
         <div className="card">
-          <input
+          <DropDownInput
             ref={inputRef}
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value.trimStart())}
-            placeholder="Search or Create tags"
-            className="input"
-            onFocus={() => setMenuOpen(true)}
-            onBlur={() => setMenuOpen(false)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !isDisable) {
-                setSelected((prev) => [...prev, query]);
-                setQuery("");
-                setMenuOpen(true);
-              }
-            }}
+            query={query}
+            setQuery={setQuery}
+            isDisable={isDisable}
+            setSelected={setSelected}
+            setMenuOpen={setMenuOpen}
           />
         </div>
         {menuOpen && (
