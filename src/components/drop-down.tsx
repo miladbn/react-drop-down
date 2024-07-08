@@ -1,5 +1,8 @@
 import { useRef, useState } from "react";
 import "./drop-down.scss";
+import DropDownMeu from "./drop-down-menu";
+import DropDownInput from "./drop-down-input";
+import Show from "./show";
 
 const DropDown: React.FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -36,7 +39,7 @@ const DropDown: React.FC = () => {
 
   return (
     <div className="container">
-      <div className="relative w-80 h-96 text-sm">
+      <div className="relative ">
         {selected.length > 0 && (
           <div className="tag-container">
             {selected.map((tag) => (
@@ -71,30 +74,14 @@ const DropDown: React.FC = () => {
             setMenuOpen={setMenuOpen}
           />
         </div>
-        {menuOpen && (
-          <div className="menu">
-            <ul className="w-full">
-              {filteredTags.length > 0 ? (
-                filteredTags.map((tag) => (
-                  <li
-                    key={tag}
-                    className="menu-item"
-                    onMouseDown={(e) => e.preventDefault()}
-                    onClick={() => {
-                      setMenuOpen(true);
-                      setSelected((prev) => [...prev, tag]);
-                      setQuery("");
-                    }}
-                  >
-                    {tag}
-                  </li>
-                ))
-              ) : (
-                <li className="no-options">No options available</li>
-              )}
-            </ul>
-          </div>
-        )}
+        <Show when={menuOpen}>
+          <DropDownMeu
+            filteredTags={filteredTags}
+            setSelected={setSelected}
+            setMenuOpen={setMenuOpen}
+            setQuery={setQuery}
+          />
+        </Show>
       </div>
     </div>
   );
