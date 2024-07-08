@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from "react";
-import { nodeToElement } from "../utlis/nodeToElement";
-import { renderProp } from "../utlis/renderProp";
+import { nodeToElement } from "../utils/nodeToElement";
+import { renderProp } from "../utils/renderProp";
 
 interface ShowProps<T> {
   /** predicate */

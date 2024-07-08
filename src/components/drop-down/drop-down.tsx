@@ -2,7 +2,8 @@ import { useRef, useState } from "react";
 import "./drop-down.scss";
 import DropDownMeu from "./drop-down-menu";
 import DropDownInput from "./drop-down-input";
-import Show from "./show";
+import Show from "../show";
+import DropDownSelect from "./drop-down-select";
 
 const DropDown: React.FC = () => {
   const [query, setQuery] = useState<string>("");
@@ -12,16 +13,11 @@ const DropDown: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const tags: string[] = [
-    "Tutorial",
-    "HowTo",
-    "DIY",
-    "Review",
-    "Tech",
-    "Gaming",
-    "Travel",
-    "Fitness",
-    "Cooking",
-    "Vlog",
+    "Education",
+    "Yeaah, science",
+    "Art",
+    "Sport",
+    "Games",
   ];
 
   const filteredTags = tags.filter(
@@ -40,30 +36,12 @@ const DropDown: React.FC = () => {
   return (
     <div className="container">
       <div className="relative ">
-        {selected.length > 0 && (
-          <div className="tag-container">
-            {selected.map((tag) => (
-              <div key={tag} className="tag">
-                {tag}
-                <div
-                  onMouseDown={(e) => e.preventDefault()}
-                  onClick={() => setSelected(selected.filter((i) => i !== tag))}
-                >
-                  {/* <Icons.Close /> */}
-                </div>
-              </div>
-            ))}
-            <div
-              className="clear"
-              onClick={() => {
-                setSelected([]);
-                inputRef.current?.focus();
-              }}
-            >
-              Clear all
-            </div>
-          </div>
-        )}
+        <DropDownSelect
+          inputRef={inputRef}
+          selected={selected}
+          setSelected={setSelected}
+        />
+
         <div className="card">
           <DropDownInput
             ref={inputRef}
