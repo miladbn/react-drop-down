@@ -1,22 +1,34 @@
-Dear lobox
+# react-drop-down
 
-I hope this message finds you well.
+A simple React drop-down component.
 
-I am pleased to submit the [Project Name] for your review and testing. You can access the project on GitHub using the following link:
+## Features
 
-React Drop-Down Project
+- Lightweight and easy to use
+- Written in TypeScript
+- Customizable styles with SCSS
 
-Project Details:
+## Installation
 
-Project Name: React Drop-Down
-Version: [Version Number]
-Description: A React component for creating drop-down menus with various customization options.
+To install the package, use the following command:
 
+```bash
+pnpm install
+```
 
-Please review the provided repository and let me know if there are any issues or if further information is needed. Your feedback is crucial to ensure that the project meets the necessary standards and requirements.
+## Usage
 
-Thank you for your time and assistance.
+Here's a basic example of how to use the drop-down component:
 
-Best regards,
+```typescript
+function App() {
+  const options = ["Option 1", "Option 2", "Option 3"];
 
-Milad najmi
+  return (
+    <div className="App">
+      <h1>React Drop Down Example</h1>
+      <DropDown options={options} />
+    </div>
+  );
+}
+```
